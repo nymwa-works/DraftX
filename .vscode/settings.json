@@ -1,0 +1,91 @@
+{
+  //
+  // --- 共通設定 ---
+  //
+  // ファイル保存時にフォーマットを実行する。
+  "editor.formatOnSave": true,
+  // 行頭・行末の余分な空白文字を表示する。
+  "editor.renderWhitespace": "boundary",
+  // Enter キーで補完候補を受け入れる。
+  "editor.acceptSuggestionOnEnter": "smart",
+  // スニペット候補を補完候補の上部に表示する。
+  "editor.snippetSuggestions": "top",
+  // デフォルトのコードフォーマッターを Prettier に設定する。
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 括弧のペアを色分けして視認性を高める。
+  "editor.bracketPairColorization.enabled": true,
+  // 括弧のペアガイド（縦線）を表示する。
+  "editor.guides.bracketPairs": true,
+  // スクロール時に現在の関数やクラスの宣言を常に上部に表示する。
+  "editor.stickyScroll.enabled": true,
+  // フォントリガチャを有効にする。
+  "editor.fontLigatures": "'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'zero', 'onum'",
+  // ファイルの自動保存を有効にする。
+  "files.autoSave": "onFocusChange",
+  // 行末の余分な空白を自動削除する。
+  "files.trimTrailingWhitespace": true,
+  // ファイルの末尾に必ず改行を入れる (POSIX準拠)。
+  "files.insertFinalNewline": true,
+  // サイドバーのEXPLORERに表示しないファイルを指定する。
+  "files.exclude": {
+    "node_modules/": true,
+    "dist/": true,
+    ".next/": true
+  },
+  // 検索の対象から除外するファイルを指定する。
+  "search.exclude": {
+    "node_modules/": true,
+    "dist/": true,
+    ".next/": true,
+    "**/*.tsbuildinfo": true
+  },
+  // ファイル監視の対象から除外するファイルを指定する。
+  "files.watcherExclude": {
+    ".git/": true,
+    "node_modules/": true,
+    "dist/": true,
+    ".next/": true
+  },
+  //
+  // --- TypeScript / JavaScript 設定 ---
+  //
+  // ファイル移動時にインポートパスを自動更新する。
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+  // インポートのパス指定を最短形式にする。
+  "js/ts.preferences.importModuleSpecifier": "shortest",
+  // ワークスペース内の TypeScript バージョンを優先的に使用する。
+  "js/ts.tsdk.promptToUseWorkspaceVersion": true,
+  // 未インポートのモジュールも補完候補に出す。
+  "js/ts.suggest.autoImports": true,
+  // -- インレイヒント (コード内に型などを薄く表示する。) --
+  "js/ts.inlayHints.parameterNames.enabled": "literals",
+  "js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+  "js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit",
+      "source.fixAll.eslint": "explicit"
+    }
+  },
+  //
+  // --- TOML 設定 ---
+  //
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
+  //
+  // --- TXT 設定 ---
+  //
+  "[plaintext]": {
+    // テキストファイルだけ折り返しをオンにする
+    "editor.wordWrap": "on"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": ["draftx"],
+  "ignorePaths": [
+    "node_modules/**",
+    "dist/**",
+    "build/**",
+    ".git/**",
+    ".gitignore",
+    "pnpm-lock.yaml",
+    "package-lock.json"
+  ]
+}

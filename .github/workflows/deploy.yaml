@@ -1,0 +1,42 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main] # main ブランチへの push で自動実行。
+  workflow_dispatch: # Actions から手動実行可能。
+
+permissions:
+  contents: read # リポジトリの内容の read を許可。
+  pages: write # GitHub Pages の write を許可。
+  id-token: write # OpenID Connect トークンの write を許可。
+
+concurrency:
+  group: pages # pages というグループで同時実行を制御。
+  cancel-in-progress: true # 新しいジョブが開始されたら、古いいジョブをキャンセル。
+
+jobs:
+  build:
+    runs-on: ubuntu-latest # 最新の Ubuntu VM でジョブを実行。
+    steps:
+      - uses: actions/checkout@v4 # VM にリポジトリをチェックアウト。
+      - uses: pnpm/action-setup@v4 # pnpm をインストール。
+      - uses: actions/setup-node@v4 # Node.js をインストール。
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm build
+      - uses: actions/configure-pages@v5 # GitHub Pages を構成。
+      - uses: actions/upload-pages-artifact@v3 # ./dist ディレクトリを GitHub Pages のアーティファクトとしてアップロード。
+        with:
+          path: ./dist
+
+  deploy:
+    needs: build # build ジョブの完了を待ってから実行。
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
